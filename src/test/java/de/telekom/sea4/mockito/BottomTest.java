@@ -1,6 +1,7 @@
 package de.telekom.sea4.mockito;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -24,6 +25,30 @@ public class BottomTest {
 		
 		// Assert
 		assertEquals(result, "First String for Mocking!");
+	}
+	
+	@Test
+	public void getSumCase0_Test() throws Exception {
+		
+		// Arrange
+		
+		// Act
+		var result = cut.getSum(0);
+		
+		// Assert
+		assertEquals(result, "Zero");
+		
+	}
+	
+	@Test
+	public void getSumCaseDefault_Test() throws Exception {
+		
+		// Arrange
+		
+		// Act & Assert
+		// equivalent zu assertThrows(Exception.class, () -> {cut.getSum(-1);});
+		assertThrows(Exception.class, () -> cut.getSum(-1));
+		
 	}
 	
 	

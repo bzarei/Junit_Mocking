@@ -10,27 +10,29 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.Mock;
 
-public class MiddleTest3 {
+public class MiddleTestSelfMock1 {
 	
 	private Middle cut;
 	
 	private IBottom bottom;
 	
-	// innere Klasse
-	public static class MockBottom implements IBottom {
-		
-		public String bottomMethode() {
-			
-			return "First String for Mocking!";
-		}
-		
-	}
-	
-	
 	@BeforeEach
 	public void setup() {
 		
-		bottom = new MockBottom();
+		bottom = new IBottom() {
+
+			@Override
+			public String bottomMethode() {
+				// wenn return von Hand (manuall)
+				return "First String for Mocking!";
+			}
+
+			@Override
+			public String getSum(Integer i) throws Exception {
+				return "upper";
+			}
+			
+		};
 		
 		cut = new Middle(bottom);
 	}
