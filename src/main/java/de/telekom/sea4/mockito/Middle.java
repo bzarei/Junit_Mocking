@@ -2,9 +2,9 @@ package de.telekom.sea4.mockito;
 
 public class Middle {
 	
-	private Bottom bottom;
+	private IBottom bottom;
 	
-	public Middle(Bottom bottom) {
+	public Middle(IBottom bottom) {
 		this.bottom = bottom;
 	}
 	
